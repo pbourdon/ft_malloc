@@ -6,7 +6,7 @@
 #    By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/07/04 13:04:26 by pbourdon          #+#    #+#              #
-#    Updated: 2016/09/19 16:02:44 by pbourdon         ###   ########.fr        #
+#    Updated: 2016/11/02 18:57:37 by pbourdon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,11 +110,11 @@ $(ODIR):
 	@mkdir $(ODIR)
 
 clean:
-	@echo "cleaning object files..."
+	@echo "cleaning object libft files..."
 	@rm -rf $(ODIR)
 
 fclean: clean
-	@echo "cleaning $(NAME) binary..."
+	@echo "cleaning $(NAME) libft binary..."
 	@rm -rf $(NAME)
 
 re: fclean all
