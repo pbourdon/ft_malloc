@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlist_new.c                                        :+:      :+:    :+:   */
+/*   ft_choose.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/08 15:35:22 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/07 19:50:10 by pbourdon         ###   ########.fr       */
+/*   Created: 2016/11/07 19:21:36 by pbourdon          #+#    #+#             */
+/*   Updated: 2016/11/07 20:07:48 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "malloc.h"
 
-t_dlist		*dlist_new(t_dlist *p_new)
+void	*ft_choose(size_t size, t_dlist *list)
 {
-	p_new = malloc(sizeof(*p_new));
-	if (p_new != NULL)
+	if (size <= 409)
 	{
-		p_new->length = 0;
-		p_new->pos = 0;
-		p_new->index2 = 0;
-		p_new->p_head = NULL;
-		p_new->p_tail = NULL;
+		tiny(size, list);
 	}
-	return (p_new);
+	else if (size <= 4096)
+	{
+		small(size, list);
+	}
+	else
+	{
+		large(size, list);
+	}
 }

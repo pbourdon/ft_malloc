@@ -1,0 +1,34 @@
+
+
+Pour stocker 1024 fois 1024 octets donc 1 048 576 octets
+
+Une page : 4096 octets
+
+Donc il faut en theorie : 256 pages
+
+
+
+Petite : Tiny : 1 A n octets
+n = 409
+1 < N <= 4096
+1 < n <= 409
+
+Moyenne : Small : N + 1 a M octets
+4096 < M < 40960
+409 < m <= 4096
+
+Large : M + 1 a X (mmap direct)
+40960 <= X
+x > 4096
+
+MULTIPLES DE 4096 OBLIGATOIRES POUR N M ET X (X = 4096)
+
+
+
+
+
+QUESTION : 
+LARGE : 0xB0000
+0xB0020 - 0xBBEEF : 48847 octets
+Pourquoi la premiere adresse commence a 20 et pas a 00 ? (0xB0020 au lieu de 0xB0000)
+

@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 08:38:32 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/09/19 19:05:11 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/07 19:49:50 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@
 # include <errno.h>
 # include <grp.h>
 
-typedef struct		s_node
+typedef struct			s_node
 {
-	char			*data;
-	struct s_node	*p_next;
-	struct s_node	*p_prev;
-}					t_node;
+	char				*data;
+	int					data2;
+	struct s_node		*p_next;
+	struct s_node		*p_prev;
+}						t_node;
 
 typedef struct		s_dlist
 {
@@ -98,6 +99,7 @@ t_dlist				*dlist_append(t_dlist *p_list, char *data);
 t_dlist				*ft_add_data(t_dlist *p_list, char *data);
 t_dlist				*ft_add_data2(t_dlist *p_list, char *data);
 t_dlist				*ft_add_data3(t_dlist *p_list, char *data);
+t_dlist				*ft_add_data_int(t_dlist *p_list, int data);
 t_dlist				*nik_the_norm2(t_dlist *p_list, t_node *p_new, int i);
 t_dlist				*nik_the_norm3(t_dlist *p_list, t_node *p_new, int i);
 char				*ft_strcup(char *arg);

@@ -6,7 +6,7 @@
 #    By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/07/04 13:04:26 by pbourdon          #+#    #+#              #
-#    Updated: 2016/11/02 18:57:37 by pbourdon         ###   ########.fr        #
+#    Updated: 2016/11/07 19:48:59 by pbourdon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ SRC		=	ft_atoi.c\
 			ft_display_list4.c\
 			ft_putstr_fd2.c\
 			ft_strstr.c\
+			ft_add_data_int.c\
 
 OBJ		=	$(SRC:.c=.o)
 	S		=	$(addprefix $(SDIR), $(SRC))

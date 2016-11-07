@@ -6,7 +6,7 @@
 #    By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/07/04 13:03:16 by pbourdon          #+#    #+#              #
-#    Updated: 2016/11/02 19:04:51 by pbourdon         ###   ########.fr        #
+#    Updated: 2016/11/07 20:07:37 by pbourdon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,10 @@ LIB = $(LIBPATH)/malloc.a
 
 NAME = malloc
 
-CC = @gcc -Wall -Werror -Wextra
+CC = @gcc
+## -Wall -Werror -Wextra
 
-SO = gcc -o libft_malloc_$(HOSTTYPE).so -shared
+## SO = gcc -o libft_malloc_$(HOSTTYPE).so -shared
 
 CFLAGS =
 
@@ -30,13 +31,14 @@ LDFLAGS = -L $(LIBPATH) -lft
 
 SRC =	main.c\
 
+
 OBJ = $(SRC:.c=.o)
 
 all: $(LIB) $(NAME)
 
 $(NAME):	$(OBJ)
 	@$(CC) $(LDFLAGS) -o $@ $^
-	@$(SO) $(OBJ)
+##	@$(SO) $(OBJ)
 	@ln -s libft_malloc_$(HOSTTYPE).so libft_malloc.so
 
 $(LIB):

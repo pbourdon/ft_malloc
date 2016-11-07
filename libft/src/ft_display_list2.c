@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 15:13:06 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/09/12 18:13:22 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/07 20:11:26 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_display_list2(t_dlist *p_list)
 		{
 			if (p_temp->data != NULL)
 			{
-				ft_putstr(p_temp->data);
+				ft_putnbr(p_temp->data2);
 				ft_putchar('\n');
 			}
 			p_temp = p_temp->p_next;

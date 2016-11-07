@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 17:27:56 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/02 17:47:07 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/07 19:47:25 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ static char term_buffer[2048];
 # include <sys/mman.h>
 
 
-
+void			*ft_choose(size_t size, t_dlist *list);
+void			*tiny(size_t size, t_dlist *list);
+void			*small(size_t size, t_dlist *list);
+void			*large(size_t size, t_dlist *list);
 
 #endif
