@@ -6,7 +6,7 @@
 #    By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/07/04 13:03:16 by pbourdon          #+#    #+#              #
-#    Updated: 2016/11/07 20:07:37 by pbourdon         ###   ########.fr        #
+#    Updated: 2016/11/08 16:52:07 by pbourdon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ CFLAGS =
 LDFLAGS = -L $(LIBPATH) -lft
 
 SRC =	main.c\
-
+		
 
 OBJ = $(SRC:.c=.o)
 
@@ -39,7 +39,7 @@ all: $(LIB) $(NAME)
 $(NAME):	$(OBJ)
 	@$(CC) $(LDFLAGS) -o $@ $^
 ##	@$(SO) $(OBJ)
-	@ln -s libft_malloc_$(HOSTTYPE).so libft_malloc.so
+##	@ln -s libft_malloc_$(HOSTTYPE).so libft_malloc.so
 
 $(LIB):
 	@make -C $(LIBPATH)

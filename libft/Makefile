@@ -3,119 +3,47 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+         #
+#    By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/07/04 13:04:26 by pbourdon          #+#    #+#              #
-#    Updated: 2016/11/07 19:48:59 by pbourdon         ###   ########.fr        #
+#    Created: 2015/12/03 17:50:31 by bde-maze          #+#    #+#              #
+#    Updated: 2016/11/08 17:37:49 by pbourdon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: clean fclean re
+NAME = libft.a
 
-NAME	=	libft.a
-CC		=	gcc
-FLAGS	=	-Wall -Wextra -Werror
+SRCS = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c\
+	ft_isdigit.c ft_isprint.c ft_memalloc.c ft_memccpy.c ft_memchr.c\
+	ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_strcat.c ft_strchr.c\
+	ft_strcmp.c ft_strcpy.c ft_strdup.c ft_strlcat.c ft_strlen.c ft_strncat.c\
+	ft_strncmp.c ft_strncpy.c ft_strnstr.c ft_strrchr.c ft_strstr.c\
+	ft_tolower.c ft_toupper.c ft_memdel.c ft_strnew.c ft_strdel.c ft_strclr.c\
+	ft_striter.c ft_striteri.c ft_strmap.c ft_strmapi.c ft_strequ.c\
+	ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim.c ft_strsplit.c ft_itoa.c\
+	ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c\
+	ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c\
+	ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_joinfree.c \
+	ft_ocur.c get_next_line.c ft_add_data.c ft_ins_avant.c nik_the_norm.c \
+	dlist_new.c ft_display_list.c \
 
-SDIR	=	./src/
-IDIR	=	./includes/
-ODIR	=	./obj/
+OBJS = $(SRCS:.c=.o)
 
-I		=	-I $(IDIR)
-
-EXT		=	Makefile
-EXT		+=	$(IDIR)libft.h
-
-SRC		=	ft_atoi.c\
-			ft_itoa.c\
-			ft_memcpy.c\
-			ft_putchar.c\
-			ft_putchar_fd.c\
-			ft_putnbr.c\
-			ft_putnbr_fd.c\
-			ft_putstr.c\
-			ft_putstr_fd.c\
-			ft_strcat.c\
-			ft_strcmp.c\
-			ft_strcpy.c\
-			ft_strdup.c\
-			ft_strjoin.c\
-			ft_strlen.c\
-			get_next_line.c\
-			ft_memmove.c\
-			ft_strchr.c\
-			ft_strncmp.c\
-			ft_delete_tab.c\
-			ft_bzero.c\
-			ft_strnew.c\
-			ft_memalloc.c\
-			ft_strcpy.c\
-			ft_add_data.c\
-			fuck_the_norm.c\
-			ft_tab_from_list.c\
-			ft_strupcase.c\
-			ft_strcut.c\
-			ft_strcmp2.c\
-			ft_set_zero.c\
-			ft_search_list.c\
-			ft_list_size.c\
-			ft_ins_avant.c\
-			ft_free_tab.c\
-			ft_display_tab.c\
-			ft_display_list.c\
-			ft_strcup.c\
-			ft_delete_space.c\
-			dlist_new.c\
-			ft_cpy_env.c\
-			ft_del_ele_list.c\
-			ft_delete_list.c\
-			ft_putchar2.c\
-			ft_get_element_from_list.c\
-			ft_get_str_from_list.c\
-			ft_display_list2.c\
-			ft_add_data3.c\
-			ft_get_size_from_list.c\
-			ft_display_list2.c\
-			ft_display_list3.c\
-			ft_display_list4.c\
-			ft_putstr_fd2.c\
-			ft_strstr.c\
-			ft_add_data_int.c\
-
-OBJ		=	$(SRC:.c=.o)
-	S		=	$(addprefix $(SDIR), $(SRC))
-	O		=	$(addprefix $(ODIR), $(OBJ))
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-test: all
-	@$(CC) $(FLAGS) test/main.c -o test/test $I -L. -lft
-	@./test/test
+$(NAME): $(OBJS)
+	@ar rc $@ $^
+	@ranlib $@
 
-creating:
-	@echo " - compiling sources\c"
-
-$(NAME): creating $(O) $(EXT)
-	@echo "\n - Creating library..."
-	@ar rc $(NAME) $(O)
-	@echo " - Optimizing..."
-	@ranlib $(NAME)
-	@echo "libft done.\n"
-
-
-$(ODIR)%.o: $(SDIR)%.c $(EXT)
-	@echo ".\c"
-	@$(CC) $(FLAGS) -c -o $@ $< $(I)
-
-$(O): | $(ODIR)
-$(ODIR):
-	@mkdir $(ODIR)
+%.o: %.c
+	@gcc $(CFLAGS) -c $^ -I./includes
 
 clean:
-	@echo "cleaning object libft files..."
-	@rm -rf $(ODIR)
+	@/bin/rm -f $(OBJS)
 
 fclean: clean
-	@echo "cleaning $(NAME) libft binary..."
-	@rm -rf $(NAME)
+	@/bin/rm -f $(NAME)
 
-re: fclean all
+re: fclean
+	@make all
