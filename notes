@@ -32,3 +32,20 @@ LARGE : 0xB0000
 0xB0020 - 0xBBEEF : 48847 octets
 Pourquoi la premiere adresse commence a 20 et pas a 00 ? (0xB0020 au lieu de 0xB0000)
 
+-----------------------------------------------------------------------------------------------------------------
+DONE 
+Il faut que la liste globale renvoit vers les 3 listes des 3 arenes.
+tiny, small et large, qui seront 3 structures contenant chacune les allocations memoires de ces zones demandes par l'utilisateur.
+
+-------------------------------------------------------------------------------------------------------------------
+TO DO 
+
+
+Rajouter toutes les fonctions d'ajout de listes avec malloc
+
+Modifier toutes les fonctions de listes pour ne pas malloc mais utiliser et gerer les mmaps.=>>>
+mmap une page entiere, et attribuer a chaque maillon que ce qui lui faut au fur et a mesure et avancer au fur et a mesure dans les adresses (partir d'une adresse et avancer au fur et a mesure).
+
+Une fois qu'on a la liste prete a accueillir les infos de malloc, il faut faire les 3 arenas.
+
+------------------------------------------------------------------------------------------------------------------

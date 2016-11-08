@@ -6,7 +6,7 @@
 #    By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/03 17:50:31 by bde-maze          #+#    #+#              #
-#    Updated: 2016/11/08 17:37:49 by pbourdon         ###   ########.fr        #
+#    Updated: 2016/11/08 20:08:39 by pbourdon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,14 +21,14 @@ SRCS = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c\
 	ft_striter.c ft_striteri.c ft_strmap.c ft_strmapi.c ft_strequ.c\
 	ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim.c ft_strsplit.c ft_itoa.c\
 	ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c\
-	ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c\
-	ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_joinfree.c \
+	ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_joinfree.c \
 	ft_ocur.c get_next_line.c ft_add_data.c ft_ins_avant.c nik_the_norm.c \
-	dlist_new.c ft_display_list.c \
+	dlist_new.c ft_display_list.c dlist_new_master.c dlist_new_mmap.c \
+	get_adress.c \
 
 OBJS = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS =
 
 all: $(NAME)
 

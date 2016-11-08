@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 19:21:36 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/07 20:07:48 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/08 19:47:32 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ void	*ft_choose(size_t size, t_dlist *list)
 	{
 		large(size, list);
 	}
+	return (NULL);
 }

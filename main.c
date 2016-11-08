@@ -1,20 +1,12 @@
 #include "malloc.h"
 
-t_dlist		*list_global;
+t_master	*global;
 
 void	*ft_malloc(size_t size)
 {
+	if (global == NULL)
+		global = dlist_new_master(global);
 
-	if (list_global == NULL)
-		list_global = dlist_new(list_global);
-	ft_putstr("\n-------------\n");
-//	list_global = ft_add_data(list_global, "adwadaw");
-//	list_global = ft_add_data(list_global, "HERE ");
-	list_global = ft_add_data(list_global, size);
-	list_global = ft_add_data(list_global, 0);
-	ft_display_list(list_global);
-	ft_putstr("--------------\n");
-	// ft_choose(size, list);
 	/*
 	char	*str;
 
@@ -33,11 +25,4 @@ int		main(void)
 
 	index = 0;
 	str = ft_malloc(10);
-
-	str = ft_malloc(123);
-
-	ft_malloc(1231231);
-	ft_malloc(1231232);
-	ft_malloc(1231233);
-	ft_malloc(1231234);
 }
