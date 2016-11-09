@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 18:30:14 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/08 20:18:20 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/09 19:11:51 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 t_arena		*get_adress(t_arena *arena)
 {
-	char	*str;
-
-	ft_putstr(" here ");
-	str = (char *)mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE,
+	arena->tiny = mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE,
 -1, 0);
-	arena->tiny = str;
-	str = (char *)mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE,
+	arena->tiny_available = 4096;
+	arena->small = mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE,
 -1, 0);
-	arena->small = str;
-	str = (char *)mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE,
+	arena->small_available = 4096;
+	arena->large = mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE,
 -1, 0);
-	arena->large = str;
+	arena->large_available = 4096;
 	return (arena);
 }

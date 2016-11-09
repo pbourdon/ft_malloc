@@ -6,14 +6,6 @@ void	*ft_malloc(size_t size)
 {
 	if (global == NULL)
 		global = dlist_new_master(global);
-
-	/*
-	char	*str;
-
-	str = (char *)mmap(0, size + 1, PROT_READ | PROT_WRITE,
-			MAP_ANON | MAP_PRIVATE, -1, 0);
-	return (str);
-	*/
 	return (NULL);
 }
 

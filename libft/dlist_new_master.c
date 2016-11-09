@@ -6,15 +6,14 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 15:35:22 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/08 20:14:40 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/09 19:13:13 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_master		*dlist_new_master(t_master *p_master)
+t_master		*dlist_new_master(t_master *global)
 {
-
 	t_dlist		*tiny;
 	t_dlist		*small;
 	t_dlist		*large;
@@ -24,17 +23,21 @@ t_master		*dlist_new_master(t_master *p_master)
 	tiny = NULL;
 	small = NULL;
 	arena = NULL;
+	arena = mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
 	arena = get_adress(arena);
 	large = dlist_new_mmap(large, arena, arena->large);
 	tiny = dlist_new_mmap(tiny, arena, arena->tiny);
 	small = dlist_new_mmap(small, arena, arena->small);
-	p_master = malloc(sizeof(*p_master));
-	if (p_master != NULL)
+	global = mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+	if (global != NULL)
 	{
-		p_master->tiny = tiny;
-		p_master->small = small;
-		p_master->large = large;
-		p_master->arena = arena;
+		global->tiny = tiny;
+		global->small = small;
+		global->large = large;
+		global->arena = arena;
 	}
-	return (p_master);
+	tiny = ft_add_data_mmap(tiny, 10, 0, arena);
+
+	ft_display_list(tiny);
+	return (global);
 }
