@@ -26,6 +26,8 @@ MULTIPLES DE 4096 OBLIGATOIRES POUR N M ET X (X = 4096)
 
 
 
+une structure qui liste les pages utilisees
+
 
 QUESTION : 
 LARGE : 0xB0000

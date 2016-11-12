@@ -6,30 +6,15 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 15:35:22 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/09 19:11:53 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/12 17:23:52 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_dlist		*dlist_new_mmap(t_dlist *p_new, t_arena *arena, char *adress)
+t_dlist		*dlist_new_mmap(t_dlist *p_new)
 {
-	p_new = (t_dlist *)adress;
-	if (arena->tiny == adress)
-	{
-		arena->tiny = adress + sizeof(p_new) + 1;
-		arena->tiny_available -= sizeof(p_new);
-	}
-	else if (arena->small == adress)
-	{
-		arena->small = adress + sizeof(p_new) + 1;
-		arena->small_available -= sizeof(p_new);
-	}
-	else if (arena->large == adress)
-	{
-		arena->large = adress + sizeof(p_new) + 1;
-		arena->large_available -= sizeof(p_new);
-	}
+	p_new = (t_dlist *)mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
 	if (p_new != NULL)
 	{
 		p_new->p_head = NULL;

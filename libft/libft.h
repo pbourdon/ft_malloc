@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 16:43:53 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/11/09 19:11:50 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/12 17:08:53 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct		s_node
 {
-	int				data;
+	void			*data;
 	struct s_node	*p_prev;
 	struct s_node	*p_next;
 }					t_node;
@@ -31,22 +31,14 @@ typedef struct		s_dlist
 	struct s_node	*p_head;
 }					t_dlist;
 
-typedef struct		s_arena
-{
-	void			*tiny;
-	int				tiny_available;
-	void			*small;
-	int				small_available;
-	void			*large;
-	int				large_available;
-}					t_arena;
-
 typedef struct		s_master
 {
 	struct s_dlist	*tiny;
 	struct s_dlist	*small;
 	struct s_dlist	*large;
-	struct s_arena	*arena;
+	struct s_dlist	*pages;
+	void			*current;
+	int				available;
 }					t_master;
 
 
@@ -116,11 +108,11 @@ t_dlist			*dlist_append(t_dlist *p_list, int data);
 t_dlist			*dlist_prepend(t_dlist *p_list, int data);
 int				ft_display_list(t_dlist *p_list);
 t_master		*dlist_new_master(t_master *p_master);
-t_dlist			*dlist_new_mmap(t_dlist *p_new, t_arena *arena, char *adress);
-t_arena			*get_adress(t_arena *arena);
-t_dlist			*ft_add_data_mmap(t_dlist *p_list, int data, int choice, t_arena *arena);
-t_dlist			*dlist_append_mmap(t_dlist *p_list, int data, int choice, t_arena *arena);
-t_dlist			*dlist_prepend_mmap(t_dlist *p_list, int data, int choice, t_arena *arena);
+t_dlist			*dlist_new_mmap(t_dlist *p_new);
+
+t_dlist			*ft_add_data_mmap(t_dlist *p_list, void *data, t_master *global);
+t_dlist			*dlist_append_mmap(t_dlist *p_list, void *data, t_master *global);
+t_dlist			*dlist_prepend_mmap(t_dlist *p_list, void *data, t_master *global);
 
 
 #endif
