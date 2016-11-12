@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 16:43:53 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/11/12 17:08:53 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/12 18:15:37 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct		s_node
 {
 	void			*data;
+	int				freed;
 	struct s_node	*p_prev;
 	struct s_node	*p_next;
 }					t_node;
@@ -39,6 +40,12 @@ typedef struct		s_master
 	struct s_dlist	*pages;
 	void			*current;
 	int				available;
+	void			*current_tiny;
+	int				available_tiny;
+	void			*current_small;
+	int				available_small;
+	void			*current_large;
+	int				available_large;
 }					t_master;
 
 
@@ -110,9 +117,8 @@ int				ft_display_list(t_dlist *p_list);
 t_master		*dlist_new_master(t_master *p_master);
 t_dlist			*dlist_new_mmap(t_dlist *p_new);
 
-t_dlist			*ft_add_data_mmap(t_dlist *p_list, void *data, t_master *global);
-t_dlist			*dlist_append_mmap(t_dlist *p_list, void *data, t_master *global);
-t_dlist			*dlist_prepend_mmap(t_dlist *p_list, void *data, t_master *global);
+t_dlist			*ft_add_data_mmap_pages(t_dlist *p_list, void *data, t_master *global);
+t_dlist			*dlist_append_mmap_pages(t_dlist *p_list, void *data, t_master *global);
 
 
 #endif

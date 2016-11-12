@@ -6,7 +6,7 @@
 #    By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/07/04 13:03:16 by pbourdon          #+#    #+#              #
-#    Updated: 2016/11/08 19:48:42 by pbourdon         ###   ########.fr        #
+#    Updated: 2016/11/12 18:09:03 by pbourdon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ CFLAGS =
 LDFLAGS = -L $(LIBPATH) -lft
 
 SRC =	main.c\
-		
+		ft_choose.c\
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@ void	*ft_malloc(size_t size)
 {
 	if (global == NULL)
 		global = dlist_new_master(global);
-	return (NULL);
+	return (ft_choose(size, global));
 }
 
 int		main(void)

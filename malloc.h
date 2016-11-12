@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 17:27:56 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/08 17:35:40 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/12 18:15:21 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@
 # include <sys/mman.h>
 
 
-void			*ft_choose(size_t size, t_dlist *list);
-void			*tiny(size_t size, t_dlist *list);
-void			*small(size_t size, t_dlist *list);
-void			*large(size_t size, t_dlist *list);
+void			*ft_choose(size_t size, t_master *master);
+void			*tiny(size_t size, t_master *master);
+void			*small(size_t size, t_master *master);
+void			*large(size_t size, t_master *master);
 
 
 #endif
