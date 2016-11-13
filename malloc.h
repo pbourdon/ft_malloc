@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 17:27:56 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/12 18:15:21 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/13 17:47:24 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ void			*ft_choose(size_t size, t_master *master);
 void			*tiny(size_t size, t_master *master);
 void			*small(size_t size, t_master *master);
 void			*large(size_t size, t_master *master);
-
+t_dlist			*ft_add_data_mmap_pages(t_dlist *p_list, void *data, t_master *global);
+t_dlist			*dlist_append_mmap_pages(t_dlist *p_list, void *data, t_master *global);
+t_master		*dlist_new_master(t_master *master);
+t_dlist			*dlist_new_mmap(t_dlist *p_new, t_master *master);
+t_dlist			*ft_check(t_dlist *p_list, void *data, t_master *master);
+t_dlist			*ft_check_adresses(t_dlist *p_list, void *data, t_master *master);
+t_dlist			*ft_add_data_mmap_adresses(t_dlist *p_list, void *data, t_master *master);
+t_dlist			*dlist_append_mmap_adresses(t_dlist *p_list, void *data, t_master *master);
 
 #endif

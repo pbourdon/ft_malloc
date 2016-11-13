@@ -6,7 +6,7 @@
 #    By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/03 17:50:31 by bde-maze          #+#    #+#              #
-#    Updated: 2016/11/12 18:08:39 by pbourdon         ###   ########.fr        #
+#    Updated: 2016/11/13 14:13:13 by pbourdon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,7 @@ SRCS = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c\
 	ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c\
 	ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_joinfree.c \
 	ft_ocur.c get_next_line.c nik_the_norm.c \
-	dlist_new.c ft_display_list.c dlist_new_master.c dlist_new_mmap.c \
-	ft_add_data_mmap_pages.c \
+	dlist_new.c ft_display_list.c \
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 16:43:53 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/11/12 18:15:37 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/13 15:07:53 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,18 @@ typedef struct		s_master
 {
 	struct s_dlist	*tiny;
 	struct s_dlist	*small;
-	struct s_dlist	*large;
-	struct s_dlist	*pages;
-	void			*current;
+	struct s_dlist	*large; // struct which lists the adresses already given
+	struct s_dlist	*pages; // struct which lists the pages already used
+	void			*current; // here it's the alloc of pages_struct
 	int				available;
-	void			*current_tiny;
-	int				available_tiny;
-	void			*current_small;
-	int				available_small;
-	void			*current_large;
-	int				available_large;
+	void			*current_struct; // here it's the alloc of structs (tiny, small & large which list the adresses already given)
+	int				available_struct;
+	int				available_large_client;
+	int				available_small_client;
+	int				available_tiny_client;
+	void			*current_large_client;// here it's the alloc given to the client
+	void			*current_small_client;
+	void			*current_tiny_client;
 }					t_master;
 
 
@@ -114,11 +116,5 @@ t_dlist			*dlist_new(t_dlist *p_new);
 t_dlist			*dlist_append(t_dlist *p_list, int data);
 t_dlist			*dlist_prepend(t_dlist *p_list, int data);
 int				ft_display_list(t_dlist *p_list);
-t_master		*dlist_new_master(t_master *p_master);
-t_dlist			*dlist_new_mmap(t_dlist *p_new);
-
-t_dlist			*ft_add_data_mmap_pages(t_dlist *p_list, void *data, t_master *global);
-t_dlist			*dlist_append_mmap_pages(t_dlist *p_list, void *data, t_master *global);
-
 
 #endif
