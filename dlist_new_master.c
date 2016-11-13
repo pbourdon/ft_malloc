@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 15:35:22 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/13 17:18:52 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/13 19:11:51 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ t_master		*ft_init_master(t_master *master)
 	master->available_struct = 0;
 	master->current_struct = 0;
 	master->current_small_client = 0;
-	master->current_large_client = 0;
 	master->current_tiny_client = 0;
 	master->available_tiny_client = 0;
 	master->available_small_client = 0;
-	master->available_large_client = 0;
 	return (master);
 }
 

@@ -14,8 +14,12 @@ void	*ft_malloc(size_t size)
 		return (NULL);
 	}
 	pointor = ft_choose(size, global);
-	ft_display_list(global->tiny);
 	return (pointor);
+}
+
+void	show_alloc_mem()
+{
+	ft_show_alloc(global);
 }
 
 int		main(void)
@@ -25,20 +29,21 @@ int		main(void)
 	long	page_size;
 
 	index = 0;
-	ft_putstr(" first malloc \n");
-	str = ft_malloc(10);
-	ft_putchar('\n');
-	ft_putstr(" second malloc \n");
-	str = ft_malloc(100);
-	ft_putchar('\n');
-	while (index < 400)
+	str = ft_malloc(40340);
+	while (index < 40340)
 	{
-		ft_putstr("\n its a new malloc of :");
-		ft_putnbr(index);
-		ft_putchar('\n');
-		str = ft_malloc(index);
-		index += 12;
+		str[index] = 'a';
+		index++;
 	}
-
+	printf("%s\n", str);
+	str = ft_malloc(450);
+	index = 0;
+	while (index < 450)
+	{
+		str[index] = 'b';
+		index++;
+	}
+	printf ("%s\n", str);
+	show_alloc_mem();
 	return (0);
 }

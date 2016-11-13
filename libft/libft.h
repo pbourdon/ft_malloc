@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 16:43:53 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/11/13 15:07:53 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/13 19:25:59 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct		s_node
 {
 	void			*data;
 	int				freed;
+	size_t			size;
 	struct s_node	*p_prev;
 	struct s_node	*p_next;
 }					t_node;
@@ -42,10 +43,9 @@ typedef struct		s_master
 	int				available;
 	void			*current_struct; // here it's the alloc of structs (tiny, small & large which list the adresses already given)
 	int				available_struct;
-	int				available_large_client;
 	int				available_small_client;
 	int				available_tiny_client;
-	void			*current_large_client;// here it's the alloc given to the client
+// here it's the alloc given to the client
 	void			*current_small_client;
 	void			*current_tiny_client;
 }					t_master;
@@ -116,5 +116,6 @@ t_dlist			*dlist_new(t_dlist *p_new);
 t_dlist			*dlist_append(t_dlist *p_list, int data);
 t_dlist			*dlist_prepend(t_dlist *p_list, int data);
 int				ft_display_list(t_dlist *p_list);
+char			*ft_itoa_base(int value, int base);
 
 #endif

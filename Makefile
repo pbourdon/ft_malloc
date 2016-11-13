@@ -6,7 +6,7 @@
 #    By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/07/04 13:03:16 by pbourdon          #+#    #+#              #
-#    Updated: 2016/11/13 17:53:03 by pbourdon         ###   ########.fr        #
+#    Updated: 2016/11/13 19:14:50 by pbourdon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC =	main.c\
 		dlist_new_mmap.c\
 		ft_add_data_mmap_pages.c\
 		ft_add_data_mmap_adresses.c\
+		ft_show_alloc.c\
 
 OBJ = $(SRC:.c=.o)
 
