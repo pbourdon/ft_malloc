@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 15:35:22 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/13 17:19:57 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/14 12:31:04 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ t_dlist		*dlist_new_mmap(t_dlist *p_new, t_master *master)
 		p_new->p_tail = NULL;
 	}
 	if (right == 1)
-		p_new = ft_check(p_new, p_new, master);
+		p_new = ft_check(p_new, p_new, master, 4096);
 	return (p_new);
 }

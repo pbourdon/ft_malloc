@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 15:35:22 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/13 19:11:51 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/14 12:30:44 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_master		*dlist_new_master(t_master *master)
 	master->current = (void *)master + sizeof(*master) + 1;
 	master->available = 4096 - sizeof(*master) - 1;
 	pages = dlist_new_mmap(pages, master);
-	pages = ft_check(pages, master, master);
+	pages = ft_check(pages, master, master, 4096);
 	large = dlist_new_mmap(large, master);
 	tiny = dlist_new_mmap(tiny, master);
 	small = dlist_new_mmap(small, master);

@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 19:13:00 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/13 19:37:09 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/14 11:56:59 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,21 @@ void		ft_display_special_list(t_dlist *list)
 	p_temp = list->p_head;
 	if (list != NULL && p_temp != NULL)
 	{
+		while (p_temp != NULL && p_temp->freed == 1)
+			p_temp = p_temp->p_next;
 		ft_putstr(ft_itoa_base((int)p_temp->data, 16));
 		ft_putstr("\n");
 		while (p_temp != NULL)
 		{
-			ft_putstr(ft_itoa_base((int)p_temp->data, 16));
-			ft_putstr(" - ");
-			ft_putstr(ft_itoa_base((int)p_temp->data + p_temp->size, 16));
-			ft_putstr(" : ");
-			ft_putnbr((int)p_temp->size);
-			ft_putstr(" octets\n");
+			if (p_temp->freed != 1)
+			{
+				ft_putstr(ft_itoa_base((int)p_temp->data, 16));
+				ft_putstr(" - ");
+				ft_putstr(ft_itoa_base((int)p_temp->data + p_temp->size, 16));
+				ft_putstr(" : ");
+				ft_putnbr((int)p_temp->size);
+				ft_putstr(" octets\n");
+			}
 			p_temp = p_temp->p_next;
 		}
 	}

@@ -6,11 +6,11 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 13:32:22 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/10/31 14:37:59 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/14 14:40:01 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_itoa_base(int value, int base)
 {

@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 16:43:53 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/11/13 19:25:59 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/14 14:26:01 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct		s_node
 	void			*data;
 	int				freed;
 	size_t			size;
+	void			*linked_page;
 	struct s_node	*p_prev;
 	struct s_node	*p_next;
 }					t_node;
@@ -32,25 +33,6 @@ typedef struct		s_dlist
 	struct s_node	*p_tail;
 	struct s_node	*p_head;
 }					t_dlist;
-
-typedef struct		s_master
-{
-	struct s_dlist	*tiny;
-	struct s_dlist	*small;
-	struct s_dlist	*large; // struct which lists the adresses already given
-	struct s_dlist	*pages; // struct which lists the pages already used
-	void			*current; // here it's the alloc of pages_struct
-	int				available;
-	void			*current_struct; // here it's the alloc of structs (tiny, small & large which list the adresses already given)
-	int				available_struct;
-	int				available_small_client;
-	int				available_tiny_client;
-// here it's the alloc given to the client
-	void			*current_small_client;
-	void			*current_tiny_client;
-}					t_master;
-
-
 
 int				ft_isprint(int c);
 int				ft_atoi(const char *str);
