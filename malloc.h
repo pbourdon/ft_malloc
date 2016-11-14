@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 17:27:56 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/14 15:57:53 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/14 18:28:18 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct		s_master
 	size_t			available_tiny_client;
 	void			*current_small_client;
 	void			*current_tiny_client;
+	size_t			temp_size;
 }					t_master;
 
 void			*ft_choose(size_t size, t_master *master);
