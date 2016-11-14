@@ -6,12 +6,12 @@
 #    By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/07/04 13:03:16 by pbourdon          #+#    #+#              #
-#    Updated: 2016/11/14 14:26:29 by pbourdon         ###   ########.fr        #
+#    Updated: 2016/11/14 17:16:37 by pbourdon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-ifeq ($(HOSTTYPETYPE),)
+ifeq ($(HOSTTYPE),)
 	HOSTTYPE := $(shell uname -m)_$(shell uname -s)
 endif
 
@@ -37,6 +37,12 @@ SRC =	main.c\
 		ft_add_data_mmap_adresses.c\
 		ft_show_alloc.c\
 		ft_real_free.c\
+		libft/ft_itoa_base.c\
+		libft/ft_putstr.c\
+		libft/ft_putnbr.c\
+		libft/nik_the_norm.c\
+		libft/ft_putchar.c\
+		libft/ft_strncpy.c\
 
 OBJ = $(SRC:.c=.o)
 

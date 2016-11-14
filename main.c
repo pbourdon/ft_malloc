@@ -1,4 +1,7 @@
 #include "malloc.h"
+#include <strings.h>
+#include <stdlib.h>
+#define M (1024 * 1024)
 
 t_master	*master;
 
@@ -32,12 +35,30 @@ void	show_alloc_mem()
 
 void	*ft_realloc(void *ptr, size_t size)
 {
-	ft_free(ptr);
-	return (ft_malloc(size));
+	void	*pointer;
+
+	pointer = ft_malloc(size);
+	pointer = ft_strncpy(pointer, ptr, (int)size);
+
+	return (pointer);
+}
+
+void	print(char *s)
+{
+	write (1, s, strlen(s));
 }
 
 int		main(void)
 {
+ft_malloc(1024); 
+ft_malloc(1024 * 32); 
+ft_malloc(1024 * 1024); 
+ft_malloc(1024 * 1024 * 16); 
+ft_malloc(1024 * 1024 * 128); 
+show_alloc_mem(); 
+return (0); 
+
+/*
 	char	*str;
 	int		index;
 
@@ -68,4 +89,5 @@ int		main(void)
 //	ft_putstr(str);
 	// show_alloc_mem();
 	return (0);
+	*/
 }

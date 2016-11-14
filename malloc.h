@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 17:27:56 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/14 14:29:07 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/14 15:57:53 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,22 @@ typedef struct		s_master
 	void			*current_tiny_client;
 }					t_master;
 
-	void			*ft_choose(size_t size, t_master *master);
-	void			*tiny(size_t size, t_master *master);
-	void			*small(size_t size, t_master *master);
-	void			*large(size_t size, t_master *master);
-	t_dlist			*ft_add_data_mmap_pages(t_dlist *p_list, void *data, t_master *global, size_t size);
-	t_dlist			*dlist_append_mmap_pages(t_dlist *p_list, void *data, t_master *global, size_t size);
-	t_master		*dlist_new_master(t_master *master);
-	t_dlist			*dlist_new_mmap(t_dlist *p_new, t_master *master);
-	t_dlist			*ft_check(t_dlist *p_list, void *data, t_master *master, size_t size);
-	t_dlist			*ft_check_adresses(t_dlist *p_list, void *data, t_master *master, void *linked_page);
-	t_dlist			*ft_add_data_mmap_adresses(t_dlist *p_list, void *data, t_master *master, void *linked_page);
-	t_dlist			*dlist_append_mmap_adresses(t_dlist *p_list, void *data, t_master *master, void *linked_page);
-	void			show_alloc_mem(void);
-	void			ft_show_alloc(t_master *master);
-	void			ft_display_special_list(t_dlist *list);
-	int				ft_real_free_tiny(void *pointer, t_master *master);
+void			*ft_choose(size_t size, t_master *master);
+void			*tiny(size_t size, t_master *master);
+void			*small(size_t size, t_master *master);
+void			*large(size_t size, t_master *master);
+t_dlist			*ft_add_data_mmap_pages(t_dlist *p_list, void *data, t_master *global, size_t size);
+t_dlist			*dlist_append_mmap_pages(t_dlist *p_list, void *data, t_master *global, size_t size);
+t_master		*dlist_new_master(t_master *master);
+t_dlist			*dlist_new_mmap(t_dlist *p_new, t_master *master);
+t_dlist			*ft_check(t_dlist *p_list, void *data, t_master *master, size_t size);
+t_dlist			*ft_check_adresses(t_dlist *p_list, void *data, t_master *master, void *linked_page);
+t_dlist			*ft_add_data_mmap_adresses(t_dlist *p_list, void *data, t_master *master, void *linked_page);
+t_dlist			*dlist_append_mmap_adresses(t_dlist *p_list, void *data, t_master *master, void *linked_page);
+void			show_alloc_mem(void);
+void			ft_show_alloc(t_master *master);
+void			ft_display_special_list(t_dlist *list);
+int				ft_real_free_tiny(void *pointer, t_master *master);
+char			*ft_itoa_base(int value, int base);
 
 #endif
