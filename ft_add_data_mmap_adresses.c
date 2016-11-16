@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 18:46:12 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/14 18:29:16 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/16 15:04:20 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_dlist		*dlist_append_mmap_adresses(t_dlist *p_list, void *data, t_master *mast
 		{
 			p_new->data = data;
 			p_new->freed = 0;
+			p_new->available_from_free = 0;
 			p_new->linked_page = linked_page;
 			p_new->size = master->temp_size;
 			p_new->p_next = NULL;

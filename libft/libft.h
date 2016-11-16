@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 16:43:53 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/11/14 14:26:01 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/16 15:03:59 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct		s_node
 	void			*linked_page;
 	struct s_node	*p_prev;
 	struct s_node	*p_next;
+	size_t			available_from_free;
 }					t_node;
 
 typedef struct		s_dlist

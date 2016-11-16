@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 17:27:56 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/14 18:28:18 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/16 19:07:35 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ typedef struct		s_master
 	size_t			temp_size;
 }					t_master;
 
+
+void			ft_free(void *ptr);
+void			show_alloc_mem(void);
+void			*ft_realloc(void *ptr, size_t size);
+void			*ft_malloc(size_t size);
 void			*ft_choose(size_t size, t_master *master);
 void			*tiny(size_t size, t_master *master);
 void			*small(size_t size, t_master *master);
@@ -74,5 +79,7 @@ void			ft_show_alloc(t_master *master);
 void			ft_display_special_list(t_dlist *list);
 int				ft_real_free_tiny(void *pointer, t_master *master);
 char			*ft_itoa_base(int value, int base);
+void			ft_check_for_realloc(t_node *current, t_node *p_new, void *page, void *adress);
+void			*ft_check_and_realloc(void *ptr, size_t size, t_master *master);
 
 #endif

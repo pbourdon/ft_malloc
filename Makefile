@@ -6,7 +6,7 @@
 #    By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/07/04 13:03:16 by pbourdon          #+#    #+#              #
-#    Updated: 2016/11/14 17:16:37 by pbourdon         ###   ########.fr        #
+#    Updated: 2016/11/16 19:07:25 by pbourdon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,10 @@ LIB = $(LIBPATH)/malloc.a
 
 NAME = malloc
 
-CC = @gcc -Wall -Werror -Wextra
+CC = @gcc 
+#-Wall -Werror -Wextra
 
-SO = gcc -o libft_malloc_$(HOSTTYPE).so -shared
+# SO = gcc -o libft_malloc_$(HOSTTYPE).so -shared
 
 CFLAGS =
 
@@ -43,6 +44,8 @@ SRC =	main.c\
 		libft/nik_the_norm.c\
 		libft/ft_putchar.c\
 		libft/ft_strncpy.c\
+		ft_check_for_realloc.c\
+		ft_check_and_realloc.c\
 
 OBJ = $(SRC:.c=.o)
 
@@ -50,8 +53,8 @@ all: $(LIB) $(NAME)
 
 $(NAME):	$(OBJ)
 	@$(CC) $(LDFLAGS) -o $@ $^
-	@$(SO) $(OBJ)
-	@ln -s libft_malloc_$(HOSTTYPE).so libft_malloc.so
+##	@$(SO) $(OBJ)
+##	@ln -s libft_malloc_$(HOSTTYPE).so libft_malloc.so
 
 $(LIB):
 	@make -C $(LIBPATH)
