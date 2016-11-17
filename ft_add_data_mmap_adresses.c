@@ -6,11 +6,50 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 18:46:12 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/16 15:04:20 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/17 12:01:19 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
+
+t_dlist		*ft_push_node(t_dlist *list, t_node *p_new)
+{
+	t_node *p_temp;
+
+	p_temp = NULL;
+	p_temp = list->p_head;
+	if (p_temp)
+	{
+		while (p_temp)
+		{
+			if (p_temp->data <= p_new->data)
+			{
+				p_temp = p_temp->p_next;
+			}
+			else
+			{
+				if (list->p_head == p_temp)
+				{
+					p_new->p_prev = NULL;
+					return (nik_the_norm2(list, p_new, 1));
+				}
+				else
+				{
+					p_new->p_prev = p_temp;
+					p_new->p_next = p_temp->p_next;
+					p_temp->p_next->p_prev = p_new;
+					p_temp->p_next = p_new;
+					return (list);
+				}
+			}
+		}
+		p_new->p_next = NULL;
+		return (nik_the_norm3(list, p_new, 1));
+	}
+	p_new->p_next = NULL;
+	list = nik_the_norm3(list, p_new, 0);
+	return (list);
+}
 
 t_node		*sodo_cookies2(t_node *p_new, t_master *master)
 {
@@ -40,11 +79,9 @@ t_dlist		*dlist_append_mmap_adresses(t_dlist *p_list, void *data, t_master *mast
 			p_new->available_from_free = 0;
 			p_new->linked_page = linked_page;
 			p_new->size = master->temp_size;
-			p_new->p_next = NULL;
-			if (p_list->p_tail == NULL)
-				p_list = nik_the_norm3(p_list, p_new, 0);
-			else
-				p_list = nik_the_norm3(p_list, p_new, 1);
+			p_new->pos = master->current_pos + 1;
+			master->current_pos += 1;
+			p_list = ft_push_node(p_list, p_new);
 		}
 		else
 			return (NULL);

@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 15:35:22 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/16 14:32:41 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/17 11:58:11 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ t_master		*dlist_new_master(t_master *master)
 	master->small = small;
 	master->large = large;
 	master->pages = pages;
+	master->current_pos = 0;
 	return (master);
 }

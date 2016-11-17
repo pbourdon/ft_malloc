@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 17:27:56 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/16 19:07:35 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/17 11:38:07 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct		s_master
 	void			*current_small_client;
 	void			*current_tiny_client;
 	size_t			temp_size;
+	int				current_pos;
 }					t_master;
 
 

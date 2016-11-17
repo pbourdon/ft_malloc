@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 15:13:06 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/16 15:08:03 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/17 12:02:18 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ int		ft_display_list(t_dlist *p_list)
 			ft_putnbr((int)p_temp->data);
 			ft_putstr(" of size : ");
 			ft_putnbr(p_temp->size);
-			ft_putstr(" and has extra space of : ");
-			ft_putnbr(p_temp->available_from_free);
+			ft_putstr(" which was the : ");
+			ft_putnbr(p_temp->pos);
+			ft_putstr(" in historic");
 			ft_putchar('\n');
 			p_temp = p_temp->p_next;
 		}

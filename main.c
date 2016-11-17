@@ -5,7 +5,7 @@
 
 t_master	*master;
 
-void	*malloc(size_t size)
+void	*ft_malloc(size_t size)
 {
 	void		*pointer;
 
@@ -22,7 +22,7 @@ void	*malloc(size_t size)
 	return (pointer);
 }
 
-void	free(void *ptr)
+void	ft_free(void *ptr)
 {
 	if (ptr != NULL)
 		ft_real_free_tiny(ptr, master);
@@ -33,7 +33,7 @@ void	show_alloc_mem()
 	ft_show_alloc(master);
 }
 
-void	*realloc(void *ptr, size_t size)
+void	*ft_realloc(void *ptr, size_t size)
 {
 	if (ptr != NULL)
 		return (ft_check_and_realloc(ptr, size, master));
@@ -45,20 +45,16 @@ void	print(char *s)
 	write (1, s, strlen(s));
 }
 
-/*int		main(void)
+int		main(void)
 {
 	char	*str;
 	char	*str2;
 	int		index = 0;
 
 
-	str = malloc(1024 * 1024);
-	malloc(1025 * 10265);
-	free(str);
-	malloc(1024 * 1024);
-	show_alloc_mem(); 
+	str = ft_malloc(1024 * 1024);
 return (0); 
-
+/*
 	char	*str;
 	int		index;
 
@@ -89,5 +85,5 @@ return (0);
 //	ft_putstr(str);
 	// show_alloc_mem();
 	return (0);
-	
-}*/
+	*/
+}
