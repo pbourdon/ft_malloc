@@ -1,75 +1,73 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/07/04 13:03:16 by pbourdon          #+#    #+#              #
-#    Updated: 2016/11/16 19:07:25 by pbourdon         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
+#* ************************************************************************** *#
+#*                                                                            *#
+#*                                                        :::      ::::::::   *#
+#*   Makefile                                           :+:      :+:    :+:   *#
+#*                                                    +:+ +:+         +:+     *#
+#*   By: ale-batt <ale-batt@student.42.fr>          +#+  +:+       +#+        *#
+#*                                                +#+#+#+#+#+   +#+           *#
+#*   Created: 2016/05/28 16:38:24 by ale-batt          #+#    #+#             *#
+#*   Updated: 2016/10/28 10:46:39 by ale-batt         ###   ########.fr       *#
+#*                                                                            *#
+#* ************************************************************************** *#
 
 ifeq ($(HOSTTYPE),)
 	HOSTTYPE := $(shell uname -m)_$(shell uname -s)
 endif
 
-LIBPATH = ./libft/
-LIB = $(LIBPATH)/malloc.a
+NAME = libft_malloc_$(HOSTTYPE).so
 
-NAME = malloc
+FLAGS = -Wall -Wextra -Werror -g
 
-CC = @gcc 
-#-Wall -Werror -Wextra
+LIBFT = libft
 
-# SO = gcc -o libft_malloc_$(HOSTTYPE).so -shared
+HEADERS		= -Iincludes/ -I$(LIBFT)/includes
+C_DIR		= sources
+H_DIR		= includes
+O_DIR 		= .OBJS
+TEST_DIR	= test
 
-CFLAGS =
+TEST_FILES 	= $(shell find $(TEST_DIR) -type f -follow)
 
-LDFLAGS = -L $(LIBPATH) -lft
+C_FILES 	= $(shell find $(C_DIR) -type f -follow)
+H_FILES 	= $(shell find $(H_DIR) -type f -follow)
+O_FILES = $(C_FILES:%.c=$(O_DIR)/%.o)
 
-SRC =	main.c\
-		ft_choose.c\
-		alloc.c\
-		dlist_new_master.c\
-		dlist_new_mmap.c\
-		ft_add_data_mmap_pages.c\
-		ft_add_data_mmap_adresses.c\
-		ft_show_alloc.c\
-		ft_real_free.c\
-		libft/ft_itoa_base.c\
-		libft/ft_putstr.c\
-		libft/ft_putnbr.c\
-		libft/nik_the_norm.c\
-		libft/ft_putchar.c\
-		libft/ft_strncpy.c\
-		ft_check_for_realloc.c\
-		ft_check_and_realloc.c\
+.PHONY: all clean fclean re
 
-OBJ = $(SRC:.c=.o)
+all : $(NAME)
 
-all: $(LIB) $(NAME)
+$(NAME) : $(O_DIR) $(O_FILES)
+	@make -C $(LIBFT)
+	@gcc $(FLAGS) -shared -o $@ $(O_FILES) -L$(LIBFT) -lft
+	@ln -sf $(NAME) libft_malloc.so
 
-$(NAME):	$(OBJ)
-	@$(CC) $(LDFLAGS) -o $@ $^
-##	@$(SO) $(OBJ)
-##	@ln -s libft_malloc_$(HOSTTYPE).so libft_malloc.so
+$(O_DIR)/%.o: %.c
+	@gcc -o $@ -c $< $(HEADERS)
 
-$(LIB):
-	@make -C $(LIBPATH)
+$(O_DIR):
+	@mkdir -p $(O_DIR)/$(C_DIR)
 
 clean:
-	@echo "cleaning object files"
-	@rm -f $(OBJ)
-	@make clean -C $(LIBPATH)
+	@rm -rf ./a.out
+	@make clean -C $(LIBFT)
+	@rm -rf $(O_DIR)
+
 
 fclean: clean
-	@rm -f $(NAME)
-	@rm -rf libft_malloc_$(HOSTTYPE).so
-	@rm -rf libft_malloc.so
-	@make fclean -C $(LIBPATH)
+	@make fclean -C $(LIBFT)
+	@rm -rf $(NAME)
 
 re: fclean all
 
-.PHONY: all re clean flcean
+.PHONY: norme setenv unsetenv test
+
+norme:
+	norminette $(C_FILES) $(H_FILES)
+
+test: all
+	@LD_PRELOAD=$(NAME) gcc $(FLAGS) $(HEADERS) $(C_FILES) $(LIBFT)/libft.a $(TEST_FILES)
+	@./a.out
+
+nolib: all
+	@gcc $(FLAGS) $(HEADERS) $(LIBFT)/libft.a $(TEST_FILES) sources/show_alloc_memory.c
+	@./a.out
