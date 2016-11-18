@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 18:46:12 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/18 10:19:38 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/18 10:32:51 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,18 @@ t_dlist		*ft_push_node(t_dlist *list, t_node *p_new)
 
 t_node		*sodo_cookies2(t_node *p_new, t_master *master)
 {
-	if (master->available_struct >= sizeof(*p_new))
+	if (master->available_struct > sizeof(*p_new))
 	{
 		p_new = (t_node *)(master->current_struct);
 		master->current_struct += sizeof(*p_new) + 1;
 		master->available_struct -= sizeof(*p_new) - 1;
+		ft_putstr("\navailable_struct :"); 
+		ft_putnbr(master->available_struct);
+		ft_putstr("\n");
 	}
 	else
 	{
+		ft_putstr(" \ndemon\n");
 		return (NULL);
 	}
 	return (p_new);
@@ -118,7 +122,7 @@ t_dlist		*ft_check_adresses(t_dlist *p_list, void *data, t_master *master, void 
 	t_node		*p_new;
 
 	p_new = NULL;
-	if (master->available_struct < sizeof(*p_new))
+	if (master->available_struct < sizeof(*p_new) * 2)
 	{
 		p_new = (t_node *)mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
 		if (p_new != NULL)
