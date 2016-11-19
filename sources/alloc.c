@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 18:11:59 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/17 19:14:08 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/19 18:49:25 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 void	*tiny(size_t size, t_master *master)
 {
 	void		*pointer;
+	t_node		*p_temp;
 
-	if (master->available_tiny_client >= size)
+	if ((p_temp = ft_check_malloc_from_free(master->tiny, size)) != NULL)
+		return (ft_get_malloc_from_free(p_temp, size, master->tiny, master));
+	else if (master->available_tiny_client >= size)
 	{
 		pointer = master->current_tiny_client;
 		master->current_tiny_client += size + 1;
@@ -41,8 +44,11 @@ void	*tiny(size_t size, t_master *master)
 void	*small(size_t size, t_master *master)
 {
 	void		*pointer;
+	t_node		*p_temp;
 
-	if (master->available_small_client >= size)
+	if ((p_temp = ft_check_malloc_from_free(master->small, size)) != NULL)
+		return (ft_get_malloc_from_free(p_temp, size, master->small, master));
+	else if (master->available_small_client >= size)
 	{
 		pointer = master->current_small_client;
 		master->current_small_client += size + 1;
@@ -77,7 +83,10 @@ size_t	ft_get_page(size_t size)
 void	*large(size_t size, t_master *master)
 {
 	void		*pointer;
+	void		*p_temp;
 
+	if ((p_temp = ft_check_malloc_from_free(master->large, size)) != NULL)
+		return (ft_get_malloc_from_free(p_temp, size, master->large, master));
 	pointer = mmap(0, ft_get_page(size), PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
 	master->pages = ft_check(master->pages, pointer, master, size);
 	master->page_large_client = pointer;

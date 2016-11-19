@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 14:20:27 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/17 12:16:16 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/19 16:35:26 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_check_for_realloc(t_node *current, t_node *p_new, void *page, void *adre
 	while (p_new)
 	{
 		if (p_new->freed == 0 && p_new->linked_page == page && adress >
-			p_new->data && diff > (size_t)adress - (int)p_new->data && 
+			p_new->data && diff > (int)adress - (int)p_new->data && 
 			((int)adress - (int)p_new->data) > 0)
 		{
 			diff = adress - p_new->data;

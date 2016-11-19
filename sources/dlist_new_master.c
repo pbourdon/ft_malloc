@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 15:35:22 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/17 11:58:11 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/19 17:33:35 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ t_master		*ft_init_master(t_master *master)
 	master->current_tiny_client = 0;
 	master->available_tiny_client = 0;
 	master->available_small_client = 0;
+	master->temp_size = 0;
+	master->temp_freed = 0;
+	master->page_tiny_client = 0;
+	master->page_small_client = 0;
+	master->page_large_client = 0;
 	return (master);
 }
 

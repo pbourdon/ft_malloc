@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 15:08:11 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/17 12:16:34 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/18 11:48:12 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	*ft_check_and_realloc(void *ptr, size_t size, t_master *master)
 	t_node		*p_new;
 	void		*temp_ptr;
 
-	p_new = NULL;
 	p_new = ft_find_ptr(master, p_new, ptr);
 	if (p_new == NULL)
 		return (NULL);

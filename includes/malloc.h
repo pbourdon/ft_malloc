@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 17:27:56 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/17 19:13:50 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/19 18:36:28 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct		s_master
 	void			*current_tiny_client;
 	size_t			temp_size;
 	int				current_pos;
+	int				temp_freed;
 }					t_master;
 
 
@@ -82,5 +83,7 @@ int				ft_real_free_tiny(void *pointer, t_master *master);
 char			*ft_itoa_base(int value, int base);
 void			ft_check_for_realloc(t_node *current, t_node *p_new, void *page, void *adress);
 void			*ft_check_and_realloc(void *ptr, size_t size, t_master *master);
+t_node			*ft_check_malloc_from_free(t_dlist *list, size_t size);
+void			*ft_get_malloc_from_free(t_node *p_temp, size_t size, t_dlist *list, t_master *master);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 19:13:00 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/17 12:15:42 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/16 18:05:04 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,26 @@ void		ft_display_special_list(t_dlist *list)
 	}
 	else
 		ft_putstr("NULL\nNULL - NULL : 0 octet\n");
+}
+
+t_dlist		*ft_sort_by_num(t_dlist *list)
+{
+	t_node		*p_temp;
+	int			temp;
+	size_t		max;
+
+	p_temp = list->p_head;
+	if (list != NULL && p_temp != NULL)
+	{
+		max = (size_t)p_temp->data;
+		while (p_temp)
+		{
+			if (max < (size_t)p_temp->data)
+			{
+			}
+		}
+	}
+	return (list);
 }
 
 size_t		ft_get_total_tiny(t_master *master)
