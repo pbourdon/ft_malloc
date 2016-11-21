@@ -19,5 +19,5 @@ Checker si on limite la memoire disponible, le malloc ne doit pas segfv
 si on limite la memoire disponible, est-ce que je dois renvoyer un pointeur ?
 
 
-
+limit stacksize dnas le shell
 

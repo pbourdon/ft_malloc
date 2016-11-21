@@ -6,7 +6,7 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 15:35:22 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/17 20:51:28 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/21 18:06:20 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ t_dlist		*dlist_new_mmap(t_dlist *p_new, t_master *master)
 	}
 	else
 	{
-		p_new = (t_dlist *)mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+		p_new = (t_dlist *)mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_ANON |
+				MAP_PRIVATE, -1, 0);
 		master->current_struct = (void *)p_new + sizeof(*p_new);
 		master->available_struct = 4096 - sizeof(*p_new) - 1;
 		right = 1;

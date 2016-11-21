@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 16:43:53 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/11/17 13:37:44 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/21 18:21:19 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ t_dlist			*dlist_new(t_dlist *p_new);
 t_dlist			*dlist_append(t_dlist *p_list, int data);
 t_dlist			*dlist_prepend(t_dlist *p_list, int data);
 int				ft_display_list(t_dlist *p_list);
+void			ft_itoa_base2(int value, int base);
 char			*ft_itoa_base(int value, int base);
 
 #endif

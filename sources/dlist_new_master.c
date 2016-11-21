@@ -6,16 +6,16 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 15:35:22 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/19 17:33:35 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/21 18:06:48 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-
 t_master		*ft_init_master(t_master *master)
 {
-	master = (t_master *)mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+	master = (t_master *)mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_ANON |
+			MAP_PRIVATE, -1, 0);
 	if (master == NULL)
 		return (NULL);
 	master->available_struct = 0;

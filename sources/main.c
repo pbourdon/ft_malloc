@@ -1,106 +1,53 @@
-#include "malloc.h"
-#include <strings.h>
-#include <stdlib.h>
-#define M (1024 * 1024)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/21 18:12:46 by pbourdon          #+#    #+#             */
+/*   Updated: 2016/11/21 19:14:31 by pbourdon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-t_master	*master;
+#include "malloc.h"
+
+t_master	*g_master;
 
 void	*malloc(size_t size)
 {
 	void		*pointer;
 
-	if (master == NULL)
-		master = dlist_new_master(master);
-	if (master == NULL)
-	{
-		ft_putstr(" NULL :");
+	if (g_master == NULL)
+		g_master = dlist_new_master(g_master);
+	if (g_master == NULL)
 		return (NULL);
-	}
-	ft_putnbr(master->current_pos);
-	ft_putstr(" trying to malloc size of : ");
+	ft_putstr(" malloc of size : ");
 	ft_putnbr(size);
-	ft_putchar('\n');
-	pointer = ft_choose(size, master);
-//	ft_putstr(" pointer : ");
-//	ft_putnbr((size_t)pointer);
-//	ft_putstr(" of size : ");
-//	ft_putnbr(size);
-//	ft_putchar('\n');
+	ft_putchar(':');
+	pointer = ft_choose(size, g_master);
+	ft_putstr("\n");
 	return (pointer);
 }
 
 void	free(void *ptr)
 {
 	if (ptr != NULL)
-		ft_real_free_tiny(ptr, master);
+		ft_real_free_tiny(ptr, g_master);
 }
 
-void	show_alloc_mem()
+void	show_alloc_mem(void)
 {
-	ft_show_alloc(master);
+	ft_show_alloc(g_master);
 }
 
 void	*realloc(void *ptr, size_t size)
 {
 	if (ptr != NULL && size > 0)
-		return (ft_check_and_realloc(ptr, size, master));
+		return (ft_check_and_realloc(ptr, size, g_master));
 	else if (ptr != NULL && size <= 0)
 		free(ptr);
 	else if (ptr == NULL && size > 0)
 		return (malloc(size));
 	return (NULL);
 }
-
-void	print(char *s)
-{
-	write (1, s, strlen(s));
-}
-/*
-int		main(void)
-{
-	char	*str;
-	char	*str2;
-	int		index = 0;
-
-
-	while (index < 1024)
-	{
-		str = ft_malloc(1024);
-		str[0] = 42;
-		index++;
-	}
-	show_alloc_mem();
-return (0); 
-
-	char	*str;
-	int		index;
-
-	index = 0;
-	str = ft_malloc(40340);
-	while (index < 40340)
-	{
-		str[index] = 'a';
-		index++;
-	}
-	printf("%s\n", str);
-	ft_free(str);
-	str = ft_malloc(450);
-	index = 0;
-	while (index < 450)
-	{
-		str[index] = 'b';
-		index++;
-	}
-	printf ("%s\n", str);
-	ft_free(str);
-	str = ft_malloc(3);
-	str[0] = 'a';
-	str[1] = 'b';
-	str[2] = 'c';
-	ft_putstr(str);
-	ft_free(str);
-//	ft_putstr(str);
-	// show_alloc_mem();
-	return (0);
-	
-}*/

@@ -6,9 +6,9 @@ int		main()
 	char	*str;
 
 	index = 0;
-	while (index < 8192)
+	while (index < 1024)
 	{
-		str = malloc(42 * index + 1);
+		str = (char *)malloc(1024);
 		str[0] = 42;
 		index++;
 	}

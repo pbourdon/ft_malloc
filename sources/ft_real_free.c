@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 11:55:54 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/16 17:24:53 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/21 18:35:33 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ int		ft_munmap(t_master *master, t_node *p_new, void *page)
 	while (p_new)
 	{
 		if (p_new->data == page)
-			return (ft_check_and_delete(munmap(page, p_new->size), p_new, master));
+		{
+			return (ft_check_and_delete(munmap(page, p_new->size),
+						p_new, master));
+		}
 		p_new = p_new->p_next;
 	}
 	return (0);
@@ -62,8 +65,10 @@ int		ft_real_free_large(void *pointer, t_master *master)
 		if (p_new->data == pointer)
 		{
 			p_new->freed = 1;
-			ft_check_for_realloc(p_new, master->large->p_head, p_new->linked_page, p_new->data);
-			return (ft_munmap(master, master->large->p_head, p_new->linked_page));
+			ft_check_for_realloc(p_new, master->large->p_head,
+					p_new->linked_page, p_new->data);
+			return (ft_munmap(master, master->large->p_head,
+						p_new->linked_page));
 		}
 		p_new = p_new->p_next;
 	}
@@ -80,8 +85,10 @@ int		ft_real_free_small(void *pointer, t_master *master)
 		if (p_new->data == pointer)
 		{
 			p_new->freed = 1;
-			ft_check_for_realloc(p_new, master->small->p_head, p_new->linked_page, p_new->data);
-			return (ft_munmap(master, master->small->p_head, p_new->linked_page));
+			ft_check_for_realloc(p_new, master->small->p_head,
+					p_new->linked_page, p_new->data);
+			return (ft_munmap(master, master->small->p_head,
+						p_new->linked_page));
 		}
 		p_new = p_new->p_next;
 	}
@@ -98,8 +105,10 @@ int		ft_real_free_tiny(void *pointer, t_master *master)
 		if (p_new->data == pointer)
 		{
 			p_new->freed = 1;
-			ft_check_for_realloc(p_new, master->tiny->p_head, p_new->linked_page, p_new->data);
-			return (ft_munmap(master, master->tiny->p_head, p_new->linked_page));
+			ft_check_for_realloc(p_new, master->tiny->p_head,
+					p_new->linked_page, p_new->data);
+			return (ft_munmap(master, master->tiny->p_head,
+						p_new->linked_page));
 		}
 		p_new = p_new->p_next;
 	}

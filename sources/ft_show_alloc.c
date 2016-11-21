@@ -6,22 +6,11 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 19:13:00 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/16 18:05:04 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/21 18:20:52 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
-
-
-void		ft_display(void *data, size_t size)
-{
-	ft_putstr(ft_itoa_base((int)data, 16));
-	ft_putstr(" - ");
-	ft_putstr(ft_itoa_base((int)data + size, 16));
-	ft_putstr(" : ");
-	ft_putnbr((int)size);
-	ft_putstr(" octets\n");
-}
 
 void		ft_display_special_list(t_dlist *list)
 {
@@ -32,37 +21,17 @@ void		ft_display_special_list(t_dlist *list)
 	{
 		while (p_temp != NULL && p_temp->freed == 1)
 			p_temp = p_temp->p_next;
-		ft_putstr(ft_itoa_base((int)p_temp->data, 16));
+		ft_itoa_base2((int)p_temp->data, 16);
 		ft_putstr("\n");
 		while (p_temp != NULL)
 		{
 			if (p_temp->freed != 1)
-				ft_display(p_temp->data, p_temp->size);
+				ft_display(p_temp->data, p_temp->size, p_temp->pos);
 			p_temp = p_temp->p_next;
 		}
 	}
 	else
 		ft_putstr("NULL\nNULL - NULL : 0 octet\n");
-}
-
-t_dlist		*ft_sort_by_num(t_dlist *list)
-{
-	t_node		*p_temp;
-	int			temp;
-	size_t		max;
-
-	p_temp = list->p_head;
-	if (list != NULL && p_temp != NULL)
-	{
-		max = (size_t)p_temp->data;
-		while (p_temp)
-		{
-			if (max < (size_t)p_temp->data)
-			{
-			}
-		}
-	}
-	return (list);
 }
 
 size_t		ft_get_total_tiny(t_master *master)
@@ -118,9 +87,6 @@ size_t		ft_get_total_large(t_master *master)
 	}
 	return (total);
 }
-
-
-
 
 void		ft_show_alloc(t_master *master)
 {
