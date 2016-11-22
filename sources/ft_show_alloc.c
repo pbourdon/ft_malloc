@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 19:13:00 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/21 18:20:52 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/22 12:48:39 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,28 @@
 void		ft_display_special_list(t_dlist *list)
 {
 	t_node	*p_temp;
+	char	*string;
+	char	*str2;
 
+	string = mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE,
+			-1, 0);
+	str2 = string + 100;
 	p_temp = list->p_head;
 	if (list != NULL && p_temp != NULL)
 	{
 		while (p_temp != NULL && p_temp->freed == 1)
 			p_temp = p_temp->p_next;
-		ft_itoa_base2((int)p_temp->data, 16);
+		ft_putstr(ft_itoa_base2((int)p_temp->data, 16, string, str2));
 		ft_putstr("\n");
 		while (p_temp != NULL)
 		{
-			if (p_temp->freed != 1)
-				ft_display(p_temp->data, p_temp->size, p_temp->pos);
+			ft_display(p_temp);
 			p_temp = p_temp->p_next;
 		}
 	}
 	else
 		ft_putstr("NULL\nNULL - NULL : 0 octet\n");
+	munmap(string, 4096);
 }
 
 size_t		ft_get_total_tiny(t_master *master)

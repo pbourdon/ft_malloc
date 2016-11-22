@@ -1,16 +1,14 @@
-Le realloc est correctement fait (en tentant en premier d'etendre la size de l'adresse avant de free et malloc direct)
-Verifier que le show_alloc est bien par ordre croissant
-Des tests un peu plus durs globalement
-Proposer plusieurs versions differentes des tests de hover-head (pour eviter que du code prefait gere ce test).
-Tester via un nm_otool/autre si y'a pas de malloc systeme qui sont faits autrement ? (de toute il va utiliser son propre malloc non ?)
-Tester que malloc essaye de renvoyer un pointeur vers une adresse free (mais encore disponible dans le systeme)
-(voir test2);
 
-Faudrait preciser dans le sujet comment sa se passe quand Tiny est vide:
-Proposer de faire un truc comme le mien (cad en mettant NULL)
+
+Verifier que le show_alloc est bien par ordre croissant
+
+
+Proposer plusieurs versions differentes des tests de hover-head (pour eviter que du code prefait gere ce test).
+
+
 Mieux expliquer a quoi corresponds l'adresse qui suit Tiny. C'est l'adresse de la premiere page de cette partie ?
 
-Des tests sur les parties bonus ?
+
 
 
 

@@ -6,11 +6,15 @@
 /*   By: pbourdon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 15:35:22 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/21 18:06:48 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/21 19:49:42 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
+
+/*
+** this code generates a new struct and initialize it
+*/
 
 t_master		*ft_init_master(t_master *master)
 {

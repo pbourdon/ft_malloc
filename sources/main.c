@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 18:12:46 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/21 19:14:31 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/22 13:09:54 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	*malloc(size_t size)
 	ft_putnbr(size);
 	ft_putchar(':');
 	pointer = ft_choose(size, g_master);
+	if (pointer == NULL)
+		ft_putstr(" NULL");
 	ft_putstr("\n");
 	return (pointer);
 }
@@ -43,6 +45,7 @@ void	show_alloc_mem(void)
 
 void	*realloc(void *ptr, size_t size)
 {
+//	ft_putstr(" trying to realloc \n");
 	if (ptr != NULL && size > 0)
 		return (ft_check_and_realloc(ptr, size, g_master));
 	else if (ptr != NULL && size <= 0)

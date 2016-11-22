@@ -6,13 +6,13 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 18:46:12 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/21 18:22:57 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/21 19:46:31 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-t_node		*sodo_cookies(t_node *p_new, t_master *master)
+t_node		*create_node(t_node *p_new, t_master *master)
 {
 	if (master->available >= sizeof(*p_new))
 	{
@@ -33,7 +33,7 @@ t_dlist		*dlist_append_mmap_pages(t_dlist *p_list, void *data,
 	p_new = NULL;
 	if (p_list != NULL)
 	{
-		p_new = sodo_cookies(p_new, master);
+		p_new = create_node(p_new, master);
 		if (p_new != NULL)
 		{
 			p_new->data = data;
@@ -57,6 +57,11 @@ t_dlist		*ft_add_data_mmap_pages(t_dlist *p_list, void *data,
 		p_list = dlist_append_mmap_pages(p_list, data, master, size);
 	return (p_list);
 }
+
+/*
+** ft_check is the same function than ft_check_adresses include
+** ft_add_data_mmap_adresses but for the pages struct.
+*/
 
 t_dlist		*ft_check(t_dlist *p_list, void *data, t_master *master,
 				size_t size)

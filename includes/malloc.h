@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 18:39:36 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/11/21 19:10:44 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/11/22 12:39:29 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void				*ft_check_and_realloc(void *ptr, size_t size,
 t_node				*ft_check_malloc_from_free(t_dlist *list, size_t size);
 void				*ft_get_malloc_from_free(t_node *p_temp, size_t size,
 					t_dlist *list, t_master *master);
-void				ft_display(void *data, size_t size, int pos);
+void				ft_display(t_node *p_temp);
 t_dlist				*normed(t_dlist *list, t_node *p_temp, t_node *p_new);
 t_dlist				*normed2(t_dlist *list, t_node *p_temp, t_node *p_new);
 t_dlist				*normed3(t_dlist *list, t_node *p_temp, t_node *p_new);
